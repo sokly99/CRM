@@ -57,3 +57,36 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+src/
+└── app/
+    ├── core/                      # App-wide singleton infrastructure (loaded once)
+    │   ├── guards/                # Auth, role-based permission guards
+    │   ├── interceptors/          # JWT token injection, error handling, caching
+    │   ├── services/              # Global app services (AuthService, NotificationService)
+    │   └── models/                # Global types (User, ApiResponse, Pagination)
+    │
+    ├── shared/                    # Reusable, domain-agnostic UI building blocks
+    │   ├── components/            # UI primitives (Data-table, modal, card, dropdown)
+    │   ├── directives/            # Generic directives (e.g., click-outside, permission-mask)
+    │   ├── pipes/                 # Formatting pipes (phone, currency, relative-time)
+    │   └── utils/                 # Pure helper functions (date formatters, local storage)
+    │
+    ├── features/                  # Domain-specific modules (Lazy-loaded route boundaries)
+    │   ├── dashboard/             # CRM Analytics, KPI widgets, recent activity feed
+    │   ├── contacts/              # Contact directory, detail view, timeline
+    │   │   ├── components/        # Contact list table, contact form modal
+    │   │   ├── services/          # Contact-specific state (Signals / Facade) or API calls
+    │   │   ├── models/            # Contact interfaces & DTOs
+    │   │   └── contacts.routes.ts # Feature-local lazy routes
+    │   │
+    │   ├── leads/                 # Lead qualification workflow
+    │   ├── deals/                 # Pipeline Kanban board, deal stages, forecasting
+    │   ├── companies/             # Account management & hierarchy
+    │   └── settings/              # User management, custom fields, pipeline configurations
+    │
+    ├── layout/                    # Shell layout components (Sidebar, header, breadcrumbs)
+    │
+    ├── app.component.ts           # Root layout shell
+    ├── app.config.ts              # Global providers, HTTP client, router setup
+    └── app.routes.ts              # Root routes mapping to lazy feature bundles

@@ -1,0 +1,14 @@
+<aside class="w-56 bg-slate-800 p-4 text-white">
+  <h2 class="mb-6 text-xl font-bold">CRM</h2>
+  <nav class="flex flex-col gap-1">
+    @for (l of links; track l.path) {
+      <a
+        [routerLink]="l.path"
+        routerLinkActive="bg-slate-700 text-white"
+        class="rounded-md px-3 py-2 text-slate-300 hover:bg-slate-700 hover:text-white"
+      >
+        {{ l.label }}
+      </a>
+    }
+  </nav>
+</aside>
